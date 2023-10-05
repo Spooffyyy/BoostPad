@@ -7,7 +7,6 @@ use pocketmine\event\Listener;
 use pocketmine\world\World;
 use pocketmine\world\Position;
 use pocketmine\world\particle\Particle;
-use pocketmine\world\particle\FlameParticle;
 use pocketmine\utils\Config;
 use pocketmine\player\Player;
 use pocketmine\event\player\PlayerMoveEvent;
@@ -18,28 +17,28 @@ use pocketmine\block\Block;
 class Main extends PluginBase implements Listener {
 	
 	public function onEnable(): void {
-		$this->getServer()->getPluginManager()->registerEvents($this ,$this);
+		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->saveDefaultConfig();
 	}
 	
 	public function onMove(PlayerMoveEvent $event){
 		$player = $event->getPlayer();
-                $position = $player->getPosition();
-                $x = $position->getX();
-                $y = $position->getY();
-                $z = $position->getZ();
+		$position = $player->getPosition();
+		$x = $position->getX();
+		$y = $position->getY();
+		$z = $position->getZ();
 		$world = $player->getWorld();
 		$block = $world->getBlock($position);
-			$direction = $player->getDirectionVector();
-			$dx = $direction->getX();
-			$dz = $direction->getZ();
-			if ($this->getConfig()->get("Particle") == "true") {
-			$flameParticle = new FlameParticle();
-			$particleData = $flameParticle->encode(new Vector3($x, $y, $z));
-			$world->addParticle($particleData);
-		            }
-			}
-			$player->knockBack($dx, $dz, $this->getConfig()->get('BoostPower'));
+		$direction = $player->getDirectionVector();
+		$dx = $direction->getX();
+		$dz = $direction->getZ();
+		
+		if ($this->getConfig()->get("Particle") == "true") {
+			$flameParticle = new FlameParticle(); // Instantiate your custom particle
+			$particleData = $flameParticle->encode(new Vector3($x, $y, $z)); // Get the particle data
+			$world->addParticle($particleData); // Add the custom particle to the world
 		}
+		
+		$player->knockBack($dx, $dz, $this->getConfig()->get('BoostPower'));
 	}
-	
+}
