@@ -46,4 +46,3 @@ $world->addParticle($flameParticle, new Vector3($x, $y, $z + 0.3));
 $player->knockBack($dx, $dz, $boostPower);
 	}
     }
-}
