@@ -34,7 +34,7 @@ class Main extends PluginBase implements Listener {
 			$dx = $direction->getX();
 			$dz = $direction->getZ();
 			if ($this->getConfig()->get("Particle") == "true") {
-				$world->addParticle(new FlameParticle(), $player);
+				$world->addParticle(new FlameParticle(), $player->getPosition());
                                 $world->addParticle(new FlameParticle(), new Vector3($x-0.3, $y, $z));
                                 $world->addParticle(new FlameParticle(), new Vector3($x, $y, $z-0.3));
                                 $world->addParticle(new FlameParticle(), new Vector3($x+0.3, $y, $z));
