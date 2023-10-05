@@ -24,23 +24,22 @@ class Main extends PluginBase implements Listener {
 	
 	public function onMove(PlayerMoveEvent $event){
 		$player = $event->getPlayer();
-                $position = $player->getPosition();
-                $x = $position->getX();
-                $y = $position->getY();
-                $z = $position->getZ();
+		$position = $player->getPosition();
+		$x = $position->getX();
+		$y = $position->getY();
+		$z = $position->getZ();
 		$world = $player->getWorld();
 		$block = $world->getBlock($position);
-			$direction = $player->getDirectionVector();
-			$dx = $direction->getX();
-			$dz = $direction->getZ();
-			$world->addParticle(new FlameParticle(), $player->getPosition()->add(0, 1, 0));
-				$world->addParticle(new FlameParticle(), $player->getPosition());
-                                $world->addParticle(new FlameParticle(), new Vector3($x-0.3, $y, $z));
-                                $world->addParticle(new FlameParticle(), new Vector3($x, $y, $z-0.3));
-                                $world->addParticle(new FlameParticle(), new Vector3($x+0.3, $y, $z));
-                                $world->addParticle(new FlameParticle(), new Vector3($x, $y, $z+0.3));
-			}
-			$player->knockBack($dx, $dz, $this->getConfig()->get('BoostPower'));
-		}
+		$direction = $player->getDirectionVector();
+		$dx = $direction->getX();
+		$dz = $direction->getZ();
+		$world->addParticle(new FlameParticle(), $player->getPosition()->add(0, 1, 0));
+		$world->addParticle(new FlameParticle(), $player->getPosition());
+		$world->addParticle(new FlameParticle(), new Vector3($x-0.3, $y, $z));
+		$world->addParticle(new FlameParticle(), new Vector3($x, $y, $z-0.3));
+		$world->addParticle(new FlameParticle(), new Vector3($x+0.3, $y, $z));
+		$world->addParticle(new FlameParticle(), new Vector3($x, $y, $z+0.3));
+		
+		$player->knockBack($dx, $dz, $this->getConfig()->get('BoostPower'));
 	}
-	
+}
