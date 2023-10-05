@@ -20,7 +20,6 @@ class Main extends PluginBase implements Listener {
 	public function onEnable(): void {
 		$this->getServer()->getPluginManager()->registerEvents($this ,$this);
 		$this->saveDefaultConfig();
-		$this->config = $this->getConfig();
 	}
 	
 	public function onMove(PlayerMoveEvent $event){
