@@ -23,10 +23,11 @@ class Main extends PluginBase implements Listener {
 	}
 	
 	public function onMove(PlayerMoveEvent $event){
+		$position = $event->getPosition();
 		$player = $event->getPlayer();
-		$x = $player->getFloorX();
-		$y = $player->getFloorY();
-		$z = $player->getFloorZ();
+		$x = $position->getX();
+		$y = $position->getY();
+		$z = $position->getZ();
 		$world = $player->getWorld();
 		$block = $world->getBlock($player->getSide(0));
 		if($block->getID() == $this->config->get('Block')){
