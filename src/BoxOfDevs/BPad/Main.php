@@ -42,4 +42,5 @@ class Main extends PluginBase implements Listener {
 		
 		$player->knockBack($dx, $dz, $this->getConfig()->get('BoostPower'));
 	}
+    }
 }
