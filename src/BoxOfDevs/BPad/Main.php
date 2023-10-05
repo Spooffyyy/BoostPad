@@ -37,8 +37,4 @@ class Main extends PluginBase implements Listener {
 		$world->addParticle(new FlameParticle(), new Vector3($x-0.3, $y, $z));
 		$world->addParticle(new FlameParticle(), new Vector3($x, $y, $z-0.3));
 		$world->addParticle(new FlameParticle(), new Vector3($x+0.3, $y, $z));
-		$world->addParticle(new FlameParticle(), new Vector3($x, $y, $z+0.3));
-		
-		$player->knockBack($dx, $dz, $this->getConfig()->get('BoostPower'));
-	}
-}
+		$world->addParticle(new FlameParticle(), new Vector3
