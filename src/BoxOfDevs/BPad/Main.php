@@ -34,16 +34,14 @@ class Main extends PluginBase implements Listener {
 		$dx = $direction->getX();
 		$dz = $direction->getZ();
 
-$boostPower = $this->getConfig()->get('BoostPower');
-		
-$flameParticle = new FlameParticle();
-$particlePosition = new Vector3($x - 0.3, $y, $z);
+                $flameParticle = new FlameParticle();
 
-$world->addParticle($flameParticle, $particlePosition);
-$world->addParticle($flameParticle, new Vector3($x, $y, $z - 0.3));
-$world->addParticle($flameParticle, new Vector3($x + 0.3, $y, $z));
-$world->addParticle($flameParticle, new Vector3($x, $y, $z + 0.3));
-		
-$player->knockBack($dx, $dz, $boostPower);
+                $player->getWorld()->addParticle($flameParticle, $player->add(0, 1));
+                $player->getWorld()->addParticle($flameParticle, $player->add(-0.3, 0, 0));
+                $player->getWorld()->addParticle($flameParticle, $player->add(0, 0, -0.3));
+                $player->getWorld()->addParticle($flameParticle, $player->add(0.3, 0, 0));
+                $player->getWorld()->addParticle($flameParticle, $player->add(0, 0, 0.3));
+
+                $player->knockBack($dx, $dz, $boostPower);
 	}
     }
