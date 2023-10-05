@@ -29,7 +29,7 @@ class Main extends PluginBase implements Listener {
                 $y = $position->getY();
                 $z = $position->getZ();
 		$world = $player->getWorld();
-		$block = $world->getBlock($player->getSide(0));
+		$block = $world->getBlock();
 		if($block->getID() == $this->config->get('Block')){
 			$direction = $player->getDirectionVector();
 			$dx = $direction->getX();
