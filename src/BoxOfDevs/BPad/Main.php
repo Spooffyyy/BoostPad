@@ -24,9 +24,9 @@ class Main extends PluginBase implements Listener {
 	
 	public function onMove(PlayerMoveEvent $event){
 		$player = $event->getPlayer();
-		$x = $player->getX();
-		$y = $player->getY();
-		$z = $player->getZ();
+		$x = $player->getFloorX();
+		$y = $player->getFloorY();
+		$z = $player->getFloorZ();
 		$world = $player->getWorld();
 		$block = $world->getBlock($player->getSide(0));
 		if($block->getID() == $this->config->get('Block')){
