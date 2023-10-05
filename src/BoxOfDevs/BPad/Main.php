@@ -9,7 +9,6 @@ use pocketmine\world\Position;
 use pocketmine\world\particle\Particle;
 use pocketmine\world\particle\FlameParticle;
 use pocketmine\utils\Config;
-use pocketmine\utils\TextFormat as C;
 use pocketmine\player\Player;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\Server;
