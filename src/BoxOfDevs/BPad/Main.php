@@ -20,22 +20,7 @@ class Main extends PluginBase implements Listener {
 		$this->saveDefaultConfig();
 	}
 	
-	public function onMove(PlayerMoveEvent $event){
-    $player = $event->getPlayer();
-    $position = $player->getPosition();
-    $x = $position->getX();
-    $y = $position->getY();
-    $z = $position->getZ();
-    $world = $player->getWorld();
-    $block = $world->getBlock($position);
-    $direction = $player->getDirectionVector();
-    $dx = $direction->getX();
-    $dz = $direction->getZ();
-
-    $config = $this->getConfig();
-    $boostBlockId = $config->get("Block");
-
-    public function onMove(PlayerMoveEvent $event) {
+	public function onMove(PlayerMoveEvent $event) {
     $player = $event->getPlayer();
     $position = $player->getPosition();
     $x = $position->getX();
@@ -47,7 +32,7 @@ class Main extends PluginBase implements Listener {
     $config = $this->getConfig();
     $boostBlockId = $config->get("Block");
     
-    if ($block->getTypeId() === $boostBlockId) {
+    if ($block->getId() === $boostBlockId) {
         $boostPower = $config->get("BoostPower");
         $direction = $player->getDirectionVector();
         $player->addForce($direction->multiply($boostPower));
