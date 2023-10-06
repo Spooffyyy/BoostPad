@@ -21,18 +21,22 @@ class Main extends PluginBase implements Listener {
 	}
 	
 	public function onMove(PlayerMoveEvent $event){
-		$player = $event->getPlayer();
-		$position = $player->getPosition();
-		$x = $position->getX();
-		$y = $position->getY();
-		$z = $position->getZ();
-		$world = $player->getWorld();
-		$block = $world->getBlock($position);
-		$direction = $player->getDirectionVector();
-		$dx = $direction->getX();
-		$dz = $direction->getZ(); // removed particles. Might add them later.
-		
-                $boostPower = $this->getConfig()->get("BoostPower");
-                $player->knockBack($dx, $dz, $boostPower);
-	}
+    $player = $event->getPlayer();
+    $position = $player->getPosition();
+    $x = $position->getX();
+    $y = $position->getY();
+    $z = $position->getZ();
+    $world = $player->getWorld();
+    $block = $world->getBlock($position);
+    $direction = $player->getDirectionVector();
+    $dx = $direction->getX();
+    $dz = $direction->getZ();
+
+    $config = $this->getConfig();
+    $boostBlockId = $config->get("Block");
+
+    if ($block->getId() === $boostBlockId) {
+        $boostPower = $config->get("BoostPower");
+        $player->knockBack($dx, $dz, $boostPower);
     }
+}
