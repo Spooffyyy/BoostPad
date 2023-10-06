@@ -32,6 +32,7 @@ class Main extends PluginBase implements Listener {
 		$dx = $direction->getX();
 		$dz = $direction->getZ(); // removed particles. Might add them later.
 		
+                $boostPower = $this->getConfig()->get("BoostPower");
                 $player->knockBack($dx, $dz, $boostPower);
 	}
     }
