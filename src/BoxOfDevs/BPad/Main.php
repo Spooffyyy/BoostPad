@@ -37,7 +37,7 @@ class Main extends PluginBase implements Listener {
 
     if ($block->getTypeId() === $boostBlockId) {
         $boostPower = $config->get("BoostPower");
-        $player->knockBack($dx, $dz, $boostPower);
+        $player->setMotion($dx, $dz, $boostPower);
         }
     }
 }
