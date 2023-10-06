@@ -36,8 +36,9 @@ class Main extends PluginBase implements Listener {
     $boostBlockId = $config->get("Block");
 
     if ($block->getTypeId() === $boostBlockId) {
-        $boostPower = $config->get("BoostPower");
-        $player->setMotion($dx, $dz, $boostPower);
+    $boostPower = $config->get("BoostPower");
+    $motion = new Vector3($dx * $boostPower, 0.5, $dz * $boostPower);
+    $player->setMotion($motion);
         }
     }
 }
