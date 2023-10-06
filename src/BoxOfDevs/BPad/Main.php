@@ -32,12 +32,14 @@ class Main extends PluginBase implements Listener {
     $config = $this->getConfig();
     $boostBlockId = $config->get("Block");
     
-    if ($block->getId() === $boostBlockId) {
+    if ($block->getTypeId() === $boostBlockId) {
         $boostPower = $config->get("BoostPower");
         $direction = $player->getDirectionVector();
-        $dx = $direction->getX();
-        $dz = $direction->getZ();
-        $player->knockBack($x, $y, $z, $dx, $dz, $boostPower);
+        $dx = $direction->getX() * $boostPower;
+        $dy = 0;
+        $dz = $direction->getZ() * $boostPower;
+        
+        $player->setMotion(new Vector3($dx, $dy, $dz));
         }
     }
 }
