@@ -30,8 +30,8 @@ class Main extends PluginBase implements Listener {
 		$block = $world->getBlock($position);
 		$direction = $player->getDirectionVector();
 		$dx = $direction->getX();
-		$dz = $direction->getZ();
-
+		$dz = $direction->getZ(); // removed particles. Might add them later.
+		
                 $player->knockBack($dx, $dz, $boostPower);
 	}
     }
