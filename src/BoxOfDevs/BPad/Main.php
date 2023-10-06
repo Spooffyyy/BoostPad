@@ -32,7 +32,7 @@ class Main extends PluginBase implements Listener {
     $config = $this->getConfig();
     $boostBlockId = $config->get("Block");
     
-    if ($block->getId() === $boostBlockId) {
+    if ($block->getTypeId() === $boostBlockId) {
         $boostPower = $config->get("BoostPower");
         $direction = $player->getDirectionVector();
         $player->addForce($direction->multiply($boostPower));
