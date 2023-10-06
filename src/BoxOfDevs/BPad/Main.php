@@ -6,8 +6,6 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\world\World;
 use pocketmine\world\Position;
-use pocketmine\world\particle\Particle;
-use pocketmine\world\particle\FlameParticle;
 use pocketmine\utils\Config;
 use pocketmine\player\Player;
 use pocketmine\event\player\PlayerMoveEvent;
@@ -33,14 +31,6 @@ class Main extends PluginBase implements Listener {
 		$direction = $player->getDirectionVector();
 		$dx = $direction->getX();
 		$dz = $direction->getZ();
-
-                $flameParticle = new FlameParticle();
-
-                $player->getWorld()->addParticle($flameParticle, $player->add(0, 1));
-                $player->getWorld()->addParticle($flameParticle, $player->add(-0.3, 0, 0));
-                $player->getWorld()->addParticle($flameParticle, $player->add(0, 0, -0.3));
-                $player->getWorld()->addParticle($flameParticle, $player->add(0.3, 0, 0));
-                $player->getWorld()->addParticle($flameParticle, $player->add(0, 0, 0.3));
 
                 $player->knockBack($dx, $dz, $boostPower);
 	}
